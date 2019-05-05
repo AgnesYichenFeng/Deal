@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>724369184523-e1umfktlk3vg1fqhmbrtrg7i6u62t661.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.724369184523-e1umfktlk3vg1fqhmbrtrg7i6u62t661</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAGfmYQcLa2Vxxo7kNbHYFRxn7pTlerLfk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>724369184523</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>DealWithIt</string>
+	<key>PROJECT_ID</key>
+	<string>deal-efc29</string>
+	<key>STORAGE_BUCKET</key>
+	<string>deal-efc29.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:724369184523:ios:93ae5a8e1b7839d3</string>
+	<key>DATABASE_URL</key>
+	<string>https://deal-efc29.firebaseio.com</string>
+</dict>
+</plist>
