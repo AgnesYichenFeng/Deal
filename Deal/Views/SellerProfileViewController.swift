@@ -15,8 +15,8 @@ class SellerProfileViewController: UIViewController {
     var sellerNameLabel: UILabel!
     var sellerDescriptionTextView: UITextView!
     var onSaleButton: UIButton!
-//    var soldButton: UIButton!
-
+    //    var soldButton: UIButton!
+    
     var redRec: UIView!
     var whiteRec: UIView!
     let padding: CGFloat = 18
@@ -61,7 +61,7 @@ class SellerProfileViewController: UIViewController {
         sellerNameLabel.translatesAutoresizingMaskIntoConstraints = false
         sellerNameLabel.textColor = .white
         sellerNameLabel.textAlignment = .left
-       // sellerNameLabel.text = getUser
+        // sellerNameLabel.text = getUser
         sellerNameLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         view.addSubview(sellerNameLabel)
         
@@ -93,12 +93,12 @@ class SellerProfileViewController: UIViewController {
         onSaleButton.addTarget(self, action: #selector(pushOnSaleItemsViewController), for: .touchUpInside)
         view.addSubview(onSaleButton)
         
-//        soldButton = UIButton()
-//        soldButton.setTitle("Sold", for: .normal)
-//        soldButton.setTitleColor(red, for: .normal)
-//        soldButton.translatesAutoresizingMaskIntoConstraints = false
-//        soldButton.addTarget(self, action: #selector(pushSoldItemsViewController), for: .touchUpInside)
-//        view.addSubview(soldButton)
+        //        soldButton = UIButton()
+        //        soldButton.setTitle("Sold", for: .normal)
+        //        soldButton.setTitleColor(red, for: .normal)
+        //        soldButton.translatesAutoresizingMaskIntoConstraints = false
+        //        soldButton.addTarget(self, action: #selector(pushSoldItemsViewController), for: .touchUpInside)
+        //        view.addSubview(soldButton)
         
         
         setupConstraints()
@@ -146,12 +146,12 @@ class SellerProfileViewController: UIViewController {
             onSaleButton.widthAnchor.constraint(equalToConstant: buttonWidth*2)
             ])
         
-//        NSLayoutConstraint.activate([
-//            soldButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
-//            soldButton.leadingAnchor.constraint(equalTo: onSaleButton.trailingAnchor),
-//            soldButton.heightAnchor.constraint(equalToConstant: buttonWidth/2),
-//            soldButton.widthAnchor.constraint(equalToConstant: buttonWidth)
-//            ])
+        //        NSLayoutConstraint.activate([
+        //            soldButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
+        //            soldButton.leadingAnchor.constraint(equalTo: onSaleButton.trailingAnchor),
+        //            soldButton.heightAnchor.constraint(equalToConstant: buttonWidth/2),
+        //            soldButton.widthAnchor.constraint(equalToConstant: buttonWidth)
+        //            ])
         
     }
     
@@ -168,9 +168,9 @@ class SellerProfileViewController: UIViewController {
         })
     }
     
-
+    
     @objc func pushOnSaleItemsViewController(_ target: UIButton) {
-
+        
         NetworkManager.getOneUserPosts(with: sellerGoogleId) { (onSaleItems) in
             let onSaleItemsViewController = ItemsOnProfileViewController(items: onSaleItems)
             onSaleItemsViewController.title = "On Sale"
@@ -182,7 +182,7 @@ class SellerProfileViewController: UIViewController {
             self.navigationItem.backBarButtonItem = backButton
         }
         
-       
+        
     }
     
     
@@ -191,23 +191,23 @@ class SellerProfileViewController: UIViewController {
         let imageData = Data(base64Encoded: imageString, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)!
         return UIImage(data: imageData)!
     }
-
     
-//
-//    @objc func pushSoldItemsViewController(_ target: UIButton) {
-//
-//        let soldItemsViewController = ItemsOnProfileViewController()
-//
-//        soldItemsViewController.title = "Sold"
-//        navigationController?.pushViewController(soldItemsViewController, animated: true)
-//
-//
-//        // Change title from being default back button text
-//        let backButton = UIBarButtonItem()
-//        backButton.title = "Back"
-//        navigationItem.backBarButtonItem = backButton
-//
-//    }
+    
+    //
+    //    @objc func pushSoldItemsViewController(_ target: UIButton) {
+    //
+    //        let soldItemsViewController = ItemsOnProfileViewController()
+    //
+    //        soldItemsViewController.title = "Sold"
+    //        navigationController?.pushViewController(soldItemsViewController, animated: true)
+    //
+    //
+    //        // Change title from being default back button text
+    //        let backButton = UIBarButtonItem()
+    //        backButton.title = "Back"
+    //        navigationItem.backBarButtonItem = backButton
+    //
+    //    }
 }
 
 

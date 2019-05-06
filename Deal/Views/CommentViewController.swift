@@ -37,7 +37,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         
-//        comments = DealAPI.getComment()  // for testing
+        //        comments = DealAPI.getComment()  // for testing
         getComments()
         
         commentTableView = UITableView()

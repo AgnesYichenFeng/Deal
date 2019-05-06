@@ -14,9 +14,9 @@ class NetworkManager {
     private static let url = "http://35.185.8.240/"
     
     
-
-//***********************Post****************************
-
+    
+    //***********************Post****************************
+    
     
     //POST /api/user/
     static func signInNewUser (googleID: String, userName: String, info: String) -> Void  {
@@ -30,20 +30,20 @@ class NetworkManager {
             switch response.result {
             case .success(let data):
                 print(data)
-//                let jsonDecoder = JSONDecoder()
-//                if let postUserResponse = try? jsonDecoder.decode(PostUserResponse.self, from: data) {
-//                    completion(postUserResponse.success)
-//                } else {
-//                    print("Invalid Response Data")
-//                }
+                //                let jsonDecoder = JSONDecoder()
+                //                if let postUserResponse = try? jsonDecoder.decode(PostUserResponse.self, from: data) {
+                //                    completion(postUserResponse.success)
+                //                } else {
+                //                    print("Invalid Response Data")
+            //                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
-
-
+    
+    
     
     
     //Update the information of a user
@@ -71,14 +71,16 @@ class NetworkManager {
     
     
     //POST /api/user/post/<string:googleID>/
+    
+    
     static func postNewItem (item: Item, googleID: String) -> Void {
         let createNewPost = "\(NetworkManager.url)api/user/post/\(googleID)/"
         let parameters: Parameters = [
             "itemName": item.itemName,
             "itemPrice": item.itemPrice,
             "descriptionText": item.descriptionText,
-            //"userName": item.userName,
-            "comments": [],
+            "userName": item.userName,
+            //"comments": [],
             //"userGoogleId": item.userGoogleId,
             "itemImage1": item.itemImage1,
             "itemImage2": item.itemImage2,
@@ -91,12 +93,12 @@ class NetworkManager {
             switch response.result {
             case .success(let data):
                 print(data)
-//                let jsonDecoder = JSONDecoder()
-//                if let postItemResponse = try? jsonDecoder.decode(PostItemResponse.self, from: data) {
-//                    completion(postItemResponse.success)
-//                } else {
-//                    print("Invalid Response Data")
-//                }
+                //                let jsonDecoder = JSONDecoder()
+                //                if let postItemResponse = try? jsonDecoder.decode(PostItemResponse.self, from: data) {
+                //                    completion(postItemResponse.success)
+                //                } else {
+                //                    print("Invalid Response Data")
+                //                }
                 
             case .failure(let error):
                 print(error.localizedDescription)
@@ -152,12 +154,12 @@ class NetworkManager {
             }
         }
     }
-
     
     
     
-//***********************************************************************
-//*******************Get************************
+    
+    //***********************************************************************
+    //*******************Get************************
     //GET /api/users/
     static func getAllUsers (completion: @escaping([User]) -> Void){
         let allUsers = "\(NetworkManager.url)api/user/"
@@ -255,7 +257,7 @@ class NetworkManager {
     
     
     //GET all posts
-    //   /api/allPosts/
+    //   /api/posts/
     static func getAllPosts(completion: @escaping([Item]) -> Void){
         let oneUserData = "\(NetworkManager.url)api/posts/"
         Alamofire.request(oneUserData, method: .get).validate().responseData { (response) in
@@ -311,7 +313,7 @@ class NetworkManager {
     
     
     
-
+    
     
 }
 

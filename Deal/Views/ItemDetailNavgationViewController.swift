@@ -97,7 +97,7 @@ class ItemDetailNavgationViewController: UIViewController {
         descriptionDetailView.layer.shadowOpacity = 0.8
         view.addSubview(descriptionDetailView)
         
-//        imageSetDetail = thisItem.imageSet
+        //        imageSetDetail = thisItem.imageSet
         let image1 = convertBase64ToImage(imageString: thisItem.itemImage1)
         let image2 = convertBase64ToImage(imageString: thisItem.itemImage2)
         let image3 = convertBase64ToImage(imageString: thisItem.itemImage3)
@@ -129,18 +129,18 @@ class ItemDetailNavgationViewController: UIViewController {
         toolBar = UIToolbar()
         toolBar.translatesAutoresizingMaskIntoConstraints = false
         let likeBarItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(likeItem))
-//        toggleHeart(for: likeBarItem)
+        //        toggleHeart(for: likeBarItem)
         
         let commentBarItem = UIBarButtonItem(image: UIImage(named: "Comment"), style: .plain, target: self, action: #selector(pushCommentViewController))
         
-//        let wantBarItem = UIBarButtonItem(title: "Want It", style: .plain, target: self, action: nil)
-//        wantBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 21)], for: .normal)
-//
-//        let gotBarItem = UIBarButtonItem(title: "Got It", style: .plain, target: self, action: nil)
-//        gotBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 21)], for: .normal)
-//
-//        let soldBarItem = UIBarButtonItem(title: "Sold", style: .plain, target: self, action: nil)
-//        soldBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 21)], for: .normal)
+        //        let wantBarItem = UIBarButtonItem(title: "Want It", style: .plain, target: self, action: nil)
+        //        wantBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 21)], for: .normal)
+        //
+        //        let gotBarItem = UIBarButtonItem(title: "Got It", style: .plain, target: self, action: nil)
+        //        gotBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 21)], for: .normal)
+        //
+        //        let soldBarItem = UIBarButtonItem(title: "Sold", style: .plain, target: self, action: nil)
+        //        soldBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 21)], for: .normal)
         
         let removeBarItem = UIBarButtonItem(image: UIImage(named: "Remove"), style: .plain, target: self, action: #selector(deleteThisItem))
         
@@ -170,7 +170,7 @@ class ItemDetailNavgationViewController: UIViewController {
         NSLayoutConstraint.activate([
             sellerDetailButton.topAnchor.constraint(equalTo: priceDetailLabel.bottomAnchor, constant: 18),
             sellerDetailButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-          //  sellerDetailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -1*padding),
+            //  sellerDetailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -1*padding),
             sellerDetailButton.heightAnchor.constraint(equalToConstant: 20)
             ])
         
@@ -234,8 +234,8 @@ class ItemDetailNavgationViewController: UIViewController {
     }
     
     @objc func likeItem(_ target: UIBarButtonItem) {
-//        thisItem.isLiked.toggle()
-//        toggleHeart(for: target)
+        //        thisItem.isLiked.toggle()
+        //        toggleHeart(for: target)
         
         //TODO add to Favorite item list
         NetworkManager.getAllPosts { (allItems) in
@@ -290,14 +290,14 @@ class ItemDetailNavgationViewController: UIViewController {
         
     }
     
-
+    
     
     @objc func deleteThisItem() {
         NetworkManager.getAllPosts { (allItems) in
             let thisItemId = allItems[self.thisItemIndex.item].id
             NetworkManager.deleteOnePost(id: thisItemId)
         }
-     
+        
     }
     
     //Helper: Sring to Image

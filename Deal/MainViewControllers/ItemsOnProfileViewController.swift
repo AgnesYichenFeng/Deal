@@ -9,7 +9,7 @@
 import UIKit
 
 class ItemsOnProfileViewController: UIViewController {
-
+    
     
     var itemsCollectionView: UICollectionView!
     
@@ -19,8 +19,8 @@ class ItemsOnProfileViewController: UIViewController {
     
     
     init(items: [Item]) {
-    self.items = items
-    super.init(nibName: nil, bundle: nil)
+        self.items = items
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +35,7 @@ class ItemsOnProfileViewController: UIViewController {
         
         view.backgroundColor = .white
         
-//        items = [DealAPI.getItems()[0], DealAPI.getItems()[2]] // for testing
+        //        items = [DealAPI.getItems()[0], DealAPI.getItems()[2]] // for testing
         
         let itemsCollectionViewFlowLayout = UICollectionViewFlowLayout()
         itemsCollectionViewFlowLayout.scrollDirection = .vertical

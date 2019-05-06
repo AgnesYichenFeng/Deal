@@ -27,9 +27,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let radius: CGFloat = 8
     let lightGrey = UIColor(named: "LightGrey")
     let red = UIColor(named: "Red")
-   
     
-//    weak var delegate: postNewItem?
+    
+    //    weak var delegate: postNewItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,7 +142,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         photoPickerButton5.layer.shadowOffset = CGSize(width: 1.5,height: 1.5)
         photoPickerButton5.layer.shadowRadius = 2
         photoPickerButton5.layer.shadowOpacity = 0.8
-    
+        
         photoPickerButton5.setImage(UIImage(named: "Upload"), for: .normal)
         photoPickerButton5.addTarget(self, action: #selector(showImagePickerController), for: .touchUpInside)
         view.addSubview(photoPickerButton5)
@@ -302,36 +302,35 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if let nameText = productNameTextField.text, !nameText.trimmingCharacters(in: .whitespaces).isEmpty {
             if let priceText = priceTextField.text, !priceText.trimmingCharacters(in: .whitespaces).isEmpty {
                 if let descriptionText = descriptionTextView.text, !descriptionText.trimmingCharacters(in: .whitespaces).isEmpty {
-                
-                    let googleID = GIDSignIn.sharedInstance()?.currentUser.authentication.idToken
+                    
+                    let googleID = (GIDSignIn.sharedInstance()?.currentUser.authentication.idToken)!
                     let newName = productNameTextField.text
                     let newPrice = NumberFormatter().number(from: priceTextField.text!)!.doubleValue
                     let newUserName = GIDSignIn.sharedInstance()?.currentUser.profile.givenName
                     let newDescription = descriptionTextView.text
                     //TODO: add array of images
-                   
+                    
                     let itemImage1 = photoPickerButton.image(for: .normal)!.toBase64()
                     let itemImage2 = photoPickerButton2.image(for: .normal)!.toBase64()
                     let itemImage3 = photoPickerButton3.image(for: .normal)!.toBase64()
                     let itemImage4 = photoPickerButton4.image(for: .normal)!.toBase64()
                     let itemImage5 = photoPickerButton5.image(for: .normal)!.toBase64()
                     let itemImage6 = photoPickerButton6.image(for: .normal)!.toBase64()
-
                     
-                    let newPostItem = Item(userGoogleId: googleID!, itemName: newName!, itemPrice: newPrice, userName: newUserName!, descriptionText: newDescription!, itemImage1: itemImage1!, itemImage2: itemImage2!, itemImage3: itemImage3!, itemImage4: itemImage4!, itemImage5: itemImage5!, itemImage6: itemImage6!, id: 0)
+                    
+                    let newPostItem = Item(userGoogleId: googleID, itemName: newName!, itemPrice: newPrice, userName: newUserName!, descriptionText: newDescription!, itemImage1: itemImage1!, itemImage2: itemImage2!, itemImage3: itemImage3!, itemImage4: itemImage4!, itemImage5: itemImage5!, itemImage6: itemImage6!, id: 0)
                     
                     // TODO: post Item ...
-                    NetworkManager.postNewItem(item: newPostItem, googleID: googleID!)
-                    }
+                    NetworkManager.postNewItem(item: newPostItem, googleID: googleID)
                     
                     return
+                        
+                    self.dismiss(animated: true, completion: nil)
+                    
                 }
-                            
-                //delegate?.addNewItem(newItem: newPostItem) // for testing
-               // dismiss(animated: true, completion: nil)
             }
-        
-        
+            //delegate?.addNewItem(newItem: newPostItem) // for testing
+        }
         let alert = UIAlertController(title: "Invalid Item Infomation", message: "The Item Name or Price or Description is not valid.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"OK\" alert occured.")

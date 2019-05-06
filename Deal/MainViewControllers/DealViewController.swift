@@ -22,7 +22,7 @@ class DealViewController: UIViewController {
     var searchedItems: [Item] = []
     var searchActive : Bool = false
     
-//    var main = TabBarController!
+    //    var main = TabBarController!
     
     let defaults = UserDefaults.standard
     
@@ -36,8 +36,8 @@ class DealViewController: UIViewController {
         
         navigationItem.title = "Deal"
         view.backgroundColor = lightGrey
-       
-       // items = DealAPI.getItems()  // for testing
+        
+        // items = DealAPI.getItems()  // for testing
         searchedItems = items
         
         // refreshControl
@@ -79,12 +79,14 @@ class DealViewController: UIViewController {
         itemCollectionView.register(ItemCollectionViewCell.self, forCellWithReuseIdentifier: itemCellReuseIdentifier)
         view.addSubview(itemCollectionView)
         
+        getAllPosts()
+        
         setupConstraints()
         
-//        let PostVC = PostViewController()
-//        PostVC.delegate = self
+        //        let PostVC = PostViewController()
+        //        PostVC.delegate = self
     }
-
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -102,8 +104,8 @@ class DealViewController: UIViewController {
     }
     
     @objc func pulledToRefresh() {
-//        main = TabBarController()
-//        main.updateTime()
+        //        main = TabBarController()
+        //        main.updateTime()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.refresh.endRefreshing()
         }
@@ -123,7 +125,7 @@ extension DealViewController:  UICollectionViewDataSource {
         
         let item = searchedItems[indexPath.item]
         itemCell.configure(for: item)
-    
+        
         itemCell.layer.cornerRadius = 8
         itemCell.layer.backgroundColor = UIColor.white.cgColor
         itemCell.layer.shadowColor = UIColor.lightGray.cgColor
@@ -151,7 +153,7 @@ extension DealViewController: UICollectionViewDelegate {
 extension DealViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-
+        
         searchBar.showsCancelButton = true
     }
     
@@ -173,7 +175,7 @@ extension DealViewController: UISearchBarDelegate {
         }
         itemCollectionView.reloadData()
     }
-
+    
     func getSearchedItems(items : [Item], searchText: String) {
         searchedItems = []
         for item in items {
@@ -193,7 +195,7 @@ extension DealViewController: UISearchBarDelegate {
             
         }
     }
-
+    
 }
 
 //extension DealViewController: postNewItem {

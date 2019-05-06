@@ -30,7 +30,7 @@ class SignInViewController: UIViewController,  GIDSignInUIDelegate, GIDSignInDel
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-//        GIDSignIn.sharedInstance()?.signInSilently()
+        //        GIDSignIn.sharedInstance()?.signInSilently()
         
         
         signInButton = GIDSignInButton()
@@ -57,7 +57,7 @@ class SignInViewController: UIViewController,  GIDSignInUIDelegate, GIDSignInDel
         titleLabel.textAlignment = .center
         titleLabel.textColor = .white
         titleLabel.font = .italicSystemFont(ofSize: 120)
-//        titleLabel.font = .systemFont(ofSize: 120)
+        //        titleLabel.font = .systemFont(ofSize: 120)
         view.addSubview(titleLabel)
         
         
@@ -135,7 +135,7 @@ class SignInViewController: UIViewController,  GIDSignInUIDelegate, GIDSignInDel
             let userName = user.profile.givenName
             let profileImage = UIImage(named: "UserProfile")?.ConvertImageToString()
             let googleId = user.authentication.idToken
-
+            
             let newUser = User(googleID: googleId!, userName: user.profile.givenName, profileImage: profileImage!, personalInformation: "Tell us more about you... \nLeave Your contact information")
             
             NetworkManager.signInNewUser(googleID: googleId!, userName: userName!, info: "Tell us more")
@@ -143,22 +143,22 @@ class SignInViewController: UIViewController,  GIDSignInUIDelegate, GIDSignInDel
             
             // dont have to check is the user is in database
             
-//            for user in allUsers {
-//                if googleID == user.googleID {
-//                    let tabBarView = UINavigationController(rootViewController: TabBarController())
-//
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//                        self.present(tabBarView, animated: true, completion: nil)
-//                    }
-//                }
-//            }
+            //            for user in allUsers {
+            //                if googleID == user.googleID {
+            //                    let tabBarView = UINavigationController(rootViewController: TabBarController())
+            //
+            //                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            //                        self.present(tabBarView, animated: true, completion: nil)
+            //                    }
+            //                }
+            //            }
             
             //UserViewController().userNameLabel.text = user.profile.givenName
             //let givenName = user.profile.givenName!
             //User.currentUser = User(userName: givenName)
             
             let tabBarView = UINavigationController(rootViewController: TabBarController())
-   
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.present(tabBarView, animated: true, completion: nil)
             }

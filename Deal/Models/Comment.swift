@@ -32,10 +32,6 @@ struct CommentsResponse: Codable {
     var data: [Comment]
 }
 
-//struct CommentResponse: Codable { //do I need this?
-//    var data: Comment
-//}
-
 struct PostCommentResponse: Codable {
     var success: Bool
 }

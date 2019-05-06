@@ -11,6 +11,7 @@
 		58C36F252273A7010018740D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C36F242273A7010018740D /* ImageCollectionViewCell.swift */; };
 		58C36F282273A9C60018740D /* DealAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C36F272273A9C60018740D /* DealAPI.swift */; };
 		58C36F2C2273DC400018740D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C36F2B2273DC400018740D /* User.swift */; };
+		58C36F2E2273FC4D0018740D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C36F2D2273FC4D0018740D /* DatabaseManager.swift */; };
 		58C36F302273FC5A0018740D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C36F2F2273FC5A0018740D /* NetworkManager.swift */; };
 		58CC00A02272B59900831860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC009F2272B59900831860 /* AppDelegate.swift */; };
 		58CC00A22272B59900831860 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC00A12272B59900831860 /* DealViewController.swift */; };
@@ -36,6 +37,7 @@
 		58C36F242273A7010018740D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		58C36F272273A9C60018740D /* DealAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealAPI.swift; sourceTree = "<group>"; };
 		58C36F2B2273DC400018740D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		58C36F2D2273FC4D0018740D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		58C36F2F2273FC5A0018740D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		58CC009C2272B59900831860 /* Deal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CC009F2272B59900831860 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				58C36F272273A9C60018740D /* DealAPI.swift */,
+				58C36F2D2273FC4D0018740D /* DatabaseManager.swift */,
 				58C36F2F2273FC5A0018740D /* NetworkManager.swift */,
 			);
 			path = API;
@@ -333,6 +336,7 @@
 			files = (
 				58CC00B82272CE6C00831860 /* ItemCollectionViewCell.swift in Sources */,
 				58F795CC2279468D00FB4C16 /* UserViewController.swift in Sources */,
+				58C36F2E2273FC4D0018740D /* DatabaseManager.swift in Sources */,
 				58CC00B42272B8B500831860 /* TabBarController.swift in Sources */,
 				58F795CA2279468000FB4C16 /* PostViewController.swift in Sources */,
 				58C36F302273FC5A0018740D /* NetworkManager.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
-
+    
     let red = UIColor(named: "Red")
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let VC2 = PostViewController()
         VC2.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Post"), tag: 1)
-//        VC2.delegate = DealViewController() // ??
+        //        VC2.delegate = DealViewController() // ??
         
         let VC3 = UserViewController()
         VC3.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "User"), tag: 2)

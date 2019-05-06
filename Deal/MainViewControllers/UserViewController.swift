@@ -108,13 +108,13 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         onSaleButton.addTarget(self, action: #selector(pushOnSaleItemsViewController), for: .touchUpInside)
         view.addSubview(onSaleButton)
         
-//        soldButton = UIButton()
-//        soldButton.setTitle("Sold", for: .normal)
-//        soldButton.setTitleColor(red, for: .normal)
-//        soldButton.translatesAutoresizingMaskIntoConstraints = false
-//        soldButton.addTarget(self, action: #selector(pushSoldItemsViewController), for: .touchUpInside)
-//        view.addSubview(soldButton)
-//
+        //        soldButton = UIButton()
+        //        soldButton.setTitle("Sold", for: .normal)
+        //        soldButton.setTitleColor(red, for: .normal)
+        //        soldButton.translatesAutoresizingMaskIntoConstraints = false
+        //        soldButton.addTarget(self, action: #selector(pushSoldItemsViewController), for: .touchUpInside)
+        //        view.addSubview(soldButton)
+        //
         favButton = UIButton()
         favButton.setTitle("Favorites", for: .normal)
         favButton.setTitleColor(red, for: .normal)
@@ -122,12 +122,12 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         favButton.addTarget(self, action: #selector(pushFavoriteItemsViewController), for: .touchUpInside)
         view.addSubview(favButton)
         
-//        boughtButton = UIButton()
-//        boughtButton.setTitle("Bought", for: .normal)
-//        boughtButton.setTitleColor(red, for: .normal)
-//        boughtButton.translatesAutoresizingMaskIntoConstraints = false
-//        boughtButton.addTarget(self, action: #selector(pushBoughtItemsViewController), for: .touchUpInside)
-//        view.addSubview(boughtButton)
+        //        boughtButton = UIButton()
+        //        boughtButton.setTitle("Bought", for: .normal)
+        //        boughtButton.setTitleColor(red, for: .normal)
+        //        boughtButton.translatesAutoresizingMaskIntoConstraints = false
+        //        boughtButton.addTarget(self, action: #selector(pushBoughtItemsViewController), for: .touchUpInside)
+        //        view.addSubview(boughtButton)
         
         signOutButton = UIButton()
         signOutButton.translatesAutoresizingMaskIntoConstraints = false
@@ -193,12 +193,12 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             ])
         
         
-//        NSLayoutConstraint.activate([
-//            boughtButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
-//            boughtButton.leadingAnchor.constraint(equalTo: favButton.trailingAnchor),
-//            boughtButton.heightAnchor.constraint(equalToConstant: buttonWidth),
-//            boughtButton.widthAnchor.constraint(equalToConstant: buttonWidth)
-//            ])
+        //        NSLayoutConstraint.activate([
+        //            boughtButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
+        //            boughtButton.leadingAnchor.constraint(equalTo: favButton.trailingAnchor),
+        //            boughtButton.heightAnchor.constraint(equalToConstant: buttonWidth),
+        //            boughtButton.widthAnchor.constraint(equalToConstant: buttonWidth)
+        //            ])
         
         
         NSLayoutConstraint.activate([
@@ -208,12 +208,12 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             onSaleButton.widthAnchor.constraint(equalToConstant: buttonWidth)
             ])
         
-//        NSLayoutConstraint.activate([
-//            soldButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
-//            soldButton.leadingAnchor.constraint(equalTo: onSaleButton.trailingAnchor),
-//            soldButton.heightAnchor.constraint(equalToConstant: buttonWidth),
-//            soldButton.widthAnchor.constraint(equalToConstant: buttonWidth)
-//            ])
+        //        NSLayoutConstraint.activate([
+        //            soldButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
+        //            soldButton.leadingAnchor.constraint(equalTo: onSaleButton.trailingAnchor),
+        //            soldButton.heightAnchor.constraint(equalToConstant: buttonWidth),
+        //            soldButton.widthAnchor.constraint(equalToConstant: buttonWidth)
+        //            ])
         
         NSLayoutConstraint.activate([
             signOutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -1*padding),
@@ -298,7 +298,7 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
-
+    
     
     @objc func pushFavoriteItemsViewController(_ target: UIButton) {
         
@@ -308,7 +308,7 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.navigationController?.pushViewController(favoriteItemsViewController, animated: true)
             
             // Change title from being default back button text
-
+            
             let backButton = UIBarButtonItem()
             backButton.title = "Back"
             self.navigationItem.backBarButtonItem = backButton
