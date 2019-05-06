@@ -143,7 +143,7 @@ class SellerProfileViewController: UIViewController {
             onSaleButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
             onSaleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             onSaleButton.heightAnchor.constraint(equalToConstant: buttonWidth/2),
-            onSaleButton.widthAnchor.constraint(equalToConstant: buttonWidth)
+            onSaleButton.widthAnchor.constraint(equalToConstant: buttonWidth*2)
             ])
         
 //        NSLayoutConstraint.activate([

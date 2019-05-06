@@ -115,6 +115,8 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
+        textField.text = nil
+        
         return true
     }
     

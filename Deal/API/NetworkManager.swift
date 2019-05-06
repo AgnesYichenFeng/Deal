@@ -16,41 +16,45 @@ class NetworkManager {
     
 
 //***********************Post****************************
+
+    
     //POST /api/user/
-    static func signInNewUser (user: User, completion: @escaping (Bool) -> Void ) {
-        let createNewUser = "\(url)api/user"
+    static func signInNewUser (googleID: String, userName: String, info: String) -> Void  {
+        let createNewUser = "\(NetworkManager.url)api/user/\(googleID)/"
         let parameters: Parameters = [
-            "googleid": user.googleID,
-            "username": user.userName,
-            "description":user.personalInformation,
-            "posts": [],
-            "comments": []
+            //"googleID": user.googleID,
+            "userName": userName,
+            "personalInformation": info,
         ]
-        Alamofire.request(createNewUser, method: .post, parameters: parameters, encoding: URLEncoding.default).validate().responseData { (response) in
+        Alamofire.request(createNewUser, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { (response) in
             switch response.result {
             case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                if let postUserResponse = try? jsonDecoder.decode(PostUserResponse.self, from: data) {
-                    completion(postUserResponse.success)
-                } else {
-                    print("Invalid Response Data")
-                }
+                print(data)
+//                let jsonDecoder = JSONDecoder()
+//                if let postUserResponse = try? jsonDecoder.decode(PostUserResponse.self, from: data) {
+//                    completion(postUserResponse.success)
+//                } else {
+//                    print("Invalid Response Data")
+//                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
+
+
+    
     
     //Update the information of a user
-    //POST /api/user/<string:user_id>/
-    static func updateUserInformation (info: String, image: String, with googleID: String, completion: @escaping (Bool) -> Void) {
-        let updateUser = "\(url)api/user/\(googleID)/"
+    //POST /api/user/update/<string:user_id>/
+    static func updateUserInformation (info: String, image: String, googleID: String, completion: @escaping (Bool) -> Void) {
+        let updateUser = "\(NetworkManager.url)api/user/update/\(googleID)/"
         let parameters: Parameters = [
             "personalInformation": info,
             "profileImage": image
         ]
-        Alamofire.request(updateUser, method: .post, parameters: parameters, encoding: URLEncoding.default).validate().responseData { (response) in
+        Alamofire.request(updateUser, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
@@ -67,15 +71,15 @@ class NetworkManager {
     
     
     //POST /api/user/post/<string:googleID>/
-    static func postNewItem (item: Item, with googleID: String, completion: @escaping (Bool) -> Void ) {
-        let createNewPost = "\(url)api/user/post/\(googleID)/"
+    static func postNewItem (item: Item, googleID: String) -> Void {
+        let createNewPost = "\(NetworkManager.url)api/user/post/\(googleID)/"
         let parameters: Parameters = [
-            "itemname": item.itemName,
-            "price": item.itemPrice,
-            "description": item.descriptionText,
-            "username": item.userName,
+            "itemName": item.itemName,
+            "itemPrice": item.itemPrice,
+            "descriptionText": item.descriptionText,
+            //"userName": item.userName,
             "comments": [],
-            "userGoogleId": item.userGoogleId,
+            //"userGoogleId": item.userGoogleId,
             "itemImage1": item.itemImage1,
             "itemImage2": item.itemImage2,
             "itemImage3": item.itemImage3,
@@ -83,15 +87,17 @@ class NetworkManager {
             "itemImage5": item.itemImage5,
             "itemImage6": item.itemImage6
         ]
-        Alamofire.request(createNewPost, method: .post, parameters: parameters, encoding: URLEncoding.default).validate().responseData { (response) in
+        Alamofire.request(createNewPost, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { (response) in
             switch response.result {
             case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                if let postItemResponse = try? jsonDecoder.decode(PostItemResponse.self, from: data) {
-                    completion(postItemResponse.success)
-                } else {
-                    print("Invalid Response Data")
-                }
+                print(data)
+//                let jsonDecoder = JSONDecoder()
+//                if let postItemResponse = try? jsonDecoder.decode(PostItemResponse.self, from: data) {
+//                    completion(postItemResponse.success)
+//                } else {
+//                    print("Invalid Response Data")
+//                }
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -101,12 +107,12 @@ class NetworkManager {
     /// /api/favouritePosts/<string:user_id>/<int:post_id>/
     // Add item to fav items
     static func addFavoriteItem(with postID: Int, with googleID: String, completion: @escaping (Bool) -> Void) {
-        let addFav = "\(url)api/favouritePosts/\(googleID)/\(postID)/"
+        let addFav = "\(NetworkManager.url)api/favouritePosts/\(googleID)/\(postID)/"
         let parameters: Parameters = [
             "googleId": googleID,
             "id": postID
         ]
-        Alamofire.request(addFav, method: .post, parameters: parameters, encoding: URLEncoding.default).validate().responseData { (response) in
+        Alamofire.request(addFav, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
@@ -125,13 +131,14 @@ class NetworkManager {
     
     //POST /api/post/post/<string:googleID>/<int:post_id>/comment/
     static func postNewComment(comment: Comment, with postID: Int, with googleID: String, completion: @escaping (Bool) -> Void) {
-        let addComment = "\(url)api/post/post//\(googleID)/\(postID)/comment"
+        let addComment = "\(NetworkManager.url)api/post/post/\(googleID)/\(postID)/comment/"
         let parameters: Parameters = [
-            "comment": comment,
-            "googleId": googleID,
-            "id": postID
+            //"comment": comment,
+            "message": comment.message,
+            "user_id": googleID,
+            "post_id": postID
         ]
-        Alamofire.request(addComment, method: .post, parameters: parameters, encoding: URLEncoding.default).validate().responseData { (response) in
+        Alamofire.request(addComment, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
@@ -149,11 +156,37 @@ class NetworkManager {
     
     
     
-    
+//***********************************************************************
 //*******************Get************************
+    //GET /api/users/
+    static func getAllUsers (completion: @escaping([User]) -> Void){
+        let allUsers = "\(NetworkManager.url)api/user/"
+        Alamofire.request(allUsers, method: .get).validate().responseData { (response) in
+            switch response.result {
+            case .success(let data):
+                if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+                    print(json)
+                }
+                let jsonDecoder = JSONDecoder()
+                if let usersResponse = try? jsonDecoder.decode(UsersResponse.self, from: data) {
+                    completion(usersResponse.data)
+                } else {
+                    print("Invalid Response Data")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
     //GET /api/user/<string:googleID>/
     static func getOneUser (with googleID: String, completion: @escaping(User) -> Void){
-        let oneUserData = "\(url)api/user/\(googleID)/"
+        let oneUserData = "\(NetworkManager.url)api/user/\(googleID)/"
         Alamofire.request(oneUserData, method: .get).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
@@ -176,7 +209,7 @@ class NetworkManager {
     //GET one user's posts
     //  /api/posts/<string:user_id>/
     static func getOneUserPosts (with googleID: String, completion: @escaping([Item]) -> Void){
-        let oneUserPosts = "\(url)api/posts/\(googleID)/"
+        let oneUserPosts = "\(NetworkManager.url)api/posts/\(googleID)/"
         Alamofire.request(oneUserPosts, method: .get).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
@@ -200,7 +233,7 @@ class NetworkManager {
     //Get one user's favorites
     //  /api/favouritePosts/<string:googleID>/
     static func getOneUserFavs (with googleID: String, completion: @escaping([Item]) -> Void){
-        let getFavPosts = "\(url)api/favouritePosts/\(googleID)/"
+        let getFavPosts = "\(NetworkManager.url)api/favouritePosts/\(googleID)/"
         Alamofire.request(getFavPosts, method: .get).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
@@ -224,7 +257,7 @@ class NetworkManager {
     //GET all posts
     //   /api/allPosts/
     static func getAllPosts(completion: @escaping([Item]) -> Void){
-        let oneUserData = "\(url)api/posts"
+        let oneUserData = "\(NetworkManager.url)api/posts/"
         Alamofire.request(oneUserData, method: .get).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
@@ -247,7 +280,7 @@ class NetworkManager {
     
     // GET /api/post/<int:post_id>/comments/
     static func getAllComments (with postID: Int, completion: @escaping([Comment]) -> Void){
-        let allComments = "\(url)api/post/\(postID)/comments"
+        let allComments = "\(NetworkManager.url)api/post/\(postID)/comments/"
         Alamofire.request(allComments, method: .get).validate().responseData { (response) in
             switch response.result {
             case .success(let data):
@@ -272,7 +305,7 @@ class NetworkManager {
     // DELETE /api/post/<int:post_id>/
     //delete a post
     static func deleteOnePost(id: Int) -> Void {
-        let deletePost = "\(url)api/post/\(id)/"
+        let deletePost = "\(NetworkManager.url)api/post/\(id)/"
         Alamofire.request(deletePost, method: .delete)
     }
     
@@ -282,3 +315,10 @@ class NetworkManager {
     
 }
 
+
+extension UIImage {
+    func uiimageToString() -> String? {
+        guard let imageData = self.pngData() else { return nil }
+        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+    }
+}

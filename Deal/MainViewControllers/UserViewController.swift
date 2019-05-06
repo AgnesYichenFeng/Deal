@@ -76,10 +76,10 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         userInformationTextView = UITextView()
         userInformationTextView.translatesAutoresizingMaskIntoConstraints = false
-        userInformationTextView.text = "Tell us something about you"
+        userInformationTextView.text = "Tell us something about you... \nLeave your contact information"
         userInformationTextView.isEditable = true
         userInformationTextView.isScrollEnabled = true
-        userInformationTextView.font = UIFont.systemFont(ofSize: 18)
+        userInformationTextView.font = UIFont.systemFont(ofSize: 16)
         userInformationTextView.backgroundColor = .white
         userInformationTextView.textColor = .darkGray
         userInformationTextView.layer.cornerRadius = radius
@@ -143,6 +143,8 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         signOutButton.layer.shadowOpacity = 0.8
         view.addSubview(signOutButton)
         
+        self.hideKeyboardWhenTappedAround()
+        
         setupConstraints()
         //        setName()
         
@@ -185,7 +187,7 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         NSLayoutConstraint.activate([
             favButton.topAnchor.constraint(equalTo: whiteRec.topAnchor),
-            favButton.leadingAnchor.constraint(equalTo: whiteRec.leadingAnchor),
+            favButton.leadingAnchor.constraint(equalTo: whiteRec.leadingAnchor, constant: buttonWidth),
             favButton.heightAnchor.constraint(equalToConstant: buttonWidth),
             favButton.widthAnchor.constraint(equalToConstant: buttonWidth)
             ])
@@ -254,7 +256,7 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let userInfo = userInformationTextView.text
         let imageString = userImageViewButton.image(for: .normal)?.imageToString()
         //TODO: save user description ...
-        NetworkManager.updateUserInformation(info: userInfo ?? "I have nothing to say.", image: imageString!, with: thisUserGoogleID!) { (user) in
+        NetworkManager.updateUserInformation(info: userInfo ?? "I have nothing to say.", image: imageString!, googleID: thisUserGoogleID!) { (user) in
             
             // do something???
         }
@@ -268,10 +270,11 @@ class UserViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let userInfo = userInformationTextView.text
         let imageString = userImageViewButton.image(for: .normal)?.imageToString()
         //TODO: save user description ...
-        NetworkManager.updateUserInformation(info: userInfo ?? "I have nothing to say.", image: imageString!, with: thisUserGoogleID!) { (user) in
+        NetworkManager.updateUserInformation(info: userInfo ?? "I have nothing to say.", image: imageString!, googleID: thisUserGoogleID!) { (user) in
             // do something???
         }
     }
+    
     
     @objc func dismissKeyboard() {
         view.endEditing(true)

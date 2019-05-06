@@ -27,6 +27,11 @@ import UIKit
 //}
 
 // ************* Codable *************
+
+struct UsersResponse: Codable {
+    var data: [User]
+    var success: Bool
+}
 struct UserResponse: Codable {
     var data: User
     var success: Bool

@@ -13,6 +13,4 @@ target 'Deal' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
 
-
-
 end

@@ -9,7 +9,7 @@
 import UIKit
 import GoogleSignIn
 //F changed
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     
     
     var productNameTextField: UITextField!
@@ -76,6 +76,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         descriptionTextView.allowsEditingTextAttributes = true
         descriptionTextView.font = UIFont.systemFont(ofSize: 16)
         descriptionTextView.textColor = .lightGray
+        descriptionTextView.delegate = self
         
         descriptionTextView.layer.cornerRadius = radius
         descriptionTextView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -260,6 +261,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dismiss(animated: true, completion: nil)
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        self.descriptionTextView.textColor = .black
+    }
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:    #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -316,8 +321,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     let newPostItem = Item(userGoogleId: googleID!, itemName: newName!, itemPrice: newPrice, userName: newUserName!, descriptionText: newDescription!, itemImage1: itemImage1!, itemImage2: itemImage2!, itemImage3: itemImage3!, itemImage4: itemImage4!, itemImage5: itemImage5!, itemImage6: itemImage6!, id: 0)
                     
                     // TODO: post Item ...
-                    NetworkManager.postNewItem(item: newPostItem, with: googleID!) { (item) in
-                        self.dismiss(animated: true, completion: nil)
+                    NetworkManager.postNewItem(item: newPostItem, googleID: googleID!)
                     }
                     
                     return
@@ -326,7 +330,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 //delegate?.addNewItem(newItem: newPostItem) // for testing
                // dismiss(animated: true, completion: nil)
             }
-        }
+        
         
         let alert = UIAlertController(title: "Invalid Item Infomation", message: "The Item Name or Price or Description is not valid.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
@@ -335,7 +339,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.present(alert, animated: true, completion: nil)
         
     }
-    
     
     
 }

@@ -131,14 +131,27 @@ class SignInViewController: UIViewController,  GIDSignInUIDelegate, GIDSignInDel
             signInButton.isHidden = true
             loadingLabel.isHidden = false
             
-            let newUser = User(googleID: user.authentication.idToken, userName: user.profile.givenName, profileImage: "UserProfile", personalInformation: "Tell us more about you... \nLeave Your contact information")
             
-            
-            NetworkManager.signInNewUser(user: newUser) { (user) in
-                // do something here?
+            let userName = user.profile.givenName
+            let profileImage = UIImage(named: "UserProfile")?.ConvertImageToString()
+            let googleId = user.authentication.idToken
 
-            }
+            let newUser = User(googleID: googleId!, userName: user.profile.givenName, profileImage: profileImage!, personalInformation: "Tell us more about you... \nLeave Your contact information")
             
+            NetworkManager.signInNewUser(googleID: googleId!, userName: userName!, info: "Tell us more")
+            
+            
+            // dont have to check is the user is in database
+            
+//            for user in allUsers {
+//                if googleID == user.googleID {
+//                    let tabBarView = UINavigationController(rootViewController: TabBarController())
+//
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//                        self.present(tabBarView, animated: true, completion: nil)
+//                    }
+//                }
+//            }
             
             //UserViewController().userNameLabel.text = user.profile.givenName
             //let givenName = user.profile.givenName!
@@ -161,3 +174,11 @@ class SignInViewController: UIViewController,  GIDSignInUIDelegate, GIDSignInDel
         super.didReceiveMemoryWarning()
     }
 }
+
+extension UIImage {
+    func ConvertImageToString() -> String? {
+        guard let imageData = self.pngData() else { return nil }
+        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+    }
+}
+
