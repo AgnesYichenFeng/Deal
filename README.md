@@ -24,8 +24,10 @@ Back on the item's detail view, through the tool bar on the bottom, one can add 
 <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Editing%20Profile%20Page.png" width = "207" height = "447.5"> <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/User%20Profile.png" width = "207" height = "447.5"> <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/My%20Favorite%20(User%20Profile).png" width = "207" height = "447.5">
 
 ### Home Screen: Items Display, Search Bar
+<img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Home%20Screen.png" width = "207" height = "447.5"> <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Search%20Bar.png" width = "207" height = "447.5">
+
 ### Detail Screen: Item Info, Seller Page/Like/Comment
-<img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Home%20Screen.png" width = "207" height = "447.5"> <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Search%20Bar.png" width = "207" height = "447.5"> <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Item%20Detail%20Info.png" width = "207" height = "447.5"> <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Comments.png" width = "207" height = "447.5">
+<img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Item%20Detail%20Info.png" width = "207" height = "447.5"> <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Comments.png" width = "207" height = "447.5">
 
 ### Post Screen: Post New Item
 <img src = "https://github.com/Nina-Xie/Deal-v1/blob/master/Post%20New%20Item.png" width = "207" height = "447.5">
@@ -49,10 +51,10 @@ UIImagePickerController - integrated for the user to upload item images and prof
 &#10141; [Deal Spec](https://paper.dropbox.com/doc/Deal-Spec--AcljVfAX9t6dh07~Kl4dfoswAg-aiS3qX6kGyQ0M5LaVBitn)
 
 ## Authors:
-<p>Yichen Feng</p>
-<p>Nina Xie</p>
-<p>Joyce Huang</p>
-<p>Xiangyi Zhao</p>
+&#10141; [Yichen Feng](https://github.com/AgnesYichenFeng)
+&#10141; [Nina Xie](https://github.com/Nina-Xie)
+&#10141; [Joyce Huang](https://github.com/JoyceHuangEC)
+&#10141; [Xiangyi Zhao](https://github.com/XiangyiZhao)
 
 ©2019 by Fx&Hz
 
